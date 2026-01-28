@@ -1,214 +1,1054 @@
-
 <!DOCTYPE html>
 <html lang="pt-ao">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ateliê Rosa | Elegância Angolana</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Ateliê Rosa | Elegância e Sofisticação Angolana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --rosa-principal: #ff85a2;
+            --rosa-escuro: #ff5c85;
             --rosa-suave: #fce4ec;
+            --rosa-claro: #fff0f5;
             --branco: #ffffff;
             --preto: #2d3436;
+            --cinza: #636e72;
+            --cinza-claro: #f8f9fa;
+            --sombra: rgba(0,0,0,0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        body { background-color: var(--branco); color: var(--preto); }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--branco);
+            color: var(--preto);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        /* Header */
+        /* ============= HEADER ============= */
         header {
             background: var(--branco);
             padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
 
-        .logo { font-family: 'Playfair Display', serif; color: var(--rosa-principal); font-size: 24px; }
+        header.scrolled {
+            padding: 15px 5%;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+        }
 
-        /* Banner */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--rosa-principal);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 32px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--preto);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: var(--rosa-principal);
+        }
+
+        .btn-admin {
+            background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-escuro));
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 133, 162, 0.3);
+        }
+
+        .btn-admin:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 133, 162, 0.4);
+        }
+
+        /* ============= HERO SECTION ============= */
         .hero {
-            height: 400px;
-            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1350&q=80');
+            height: 500px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(252,228,236,0.9)),
+                        url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--preto); margin-bottom: 10px; }
-        .hero p { font-style: italic; color: #666; }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(255,255,255,0.3) 100%);
+        }
 
-        /* Seção de Produtos */
-        .container { padding: 50px 8%; }
-        .grid-produtos { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-            gap: 30px; 
-            margin-top: 30px;
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--preto);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--cinza);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-escuro));
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 133, 162, 0.4);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 133, 162, 0.5);
+        }
+
+        /* ============= CONTAINER ============= */
+        .container {
+            padding: 80px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--preto);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--cinza);
+            font-size: 1.1rem;
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rosa-principal), var(--rosa-escuro));
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* ============= PRODUTOS GRID ============= */
+        .produtos-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .produtos-count {
+            color: var(--cinza);
+            font-size: 0.95rem;
+        }
+
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+            animation: fadeIn 0.8s ease;
         }
 
         .card {
             background: var(--branco);
-            border: 1px solid var(--rosa-suave);
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            transition: 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
         }
 
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 250px; object-fit: cover; }
-        .card-info { padding: 20px; }
-        .card-info h3 { font-size: 1.2rem; margin-bottom: 10px; }
-        .price { color: var(--rosa-principal); font-weight: bold; font-size: 1.3rem; }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
 
-        /* Botões de Contato */
+        .card-image {
+            position: relative;
+            overflow: hidden;
+            height: 320px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-escuro));
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 133, 162, 0.4);
+        }
+
+        .card-info {
+            padding: 25px;
+        }
+
+        .card-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--preto);
+        }
+
+        .card-info p {
+            color: var(--cinza);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .price {
+            color: var(--rosa-principal);
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
         .btn-contato {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: var(--rosa-principal);
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-escuro));
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 133, 162, 0.3);
         }
 
-        /* Admin Panel */
-        #admin-panel {
+        .btn-contato:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 133, 162, 0.4);
+        }
+
+        /* ============= MODAL LOGIN ============= */
+        .modal-overlay {
             display: none;
             position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
-            border-radius: 15px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
             z-index: 2000;
-            width: 90%; max-width: 400px;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
         }
 
-        #admin-panel input, #admin-panel textarea {
-            width: 100%; margin: 10px 0; padding: 12px;
-            border: 1px solid #ddd; border-radius: 5px;
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s ease;
         }
 
-        .login-btn { cursor: pointer; background: none; border: 1px solid var(--rosa-principal); color: var(--rosa-principal); padding: 5px 15px; border-radius: 20px; }
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-        footer { text-align: center; padding: 40px; background: var(--rosa-suave); margin-top: 50px; }
+        .modal-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--preto);
+            margin-bottom: 10px;
+        }
+
+        .modal-header p {
+            color: var(--cinza);
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--preto);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--rosa-suave);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--rosa-principal);
+            box-shadow: 0 0 0 3px rgba(255, 133, 162, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-escuro));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 133, 162, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 133, 162, 0.4);
+        }
+
+        .btn-secondary {
+            width: 100%;
+            padding: 14px;
+            background: var(--cinza-claro);
+            color: var(--preto);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+
+        /* ============= PAINEL ADMIN ============= */
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-edit,
+        .btn-delete {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .btn-edit {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background: #2980b9;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        /* ============= FOOTER ============= */
+        footer {
+            background: linear-gradient(135deg, var(--rosa-suave), var(--rosa-claro));
+            padding: 60px 8% 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--rosa-principal);
+            margin-bottom: 20px;
+        }
+
+        .footer-section p {
+            color: var(--cinza);
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--preto);
+            font-weight: 500;
+        }
+
+        .contact-item i {
+            color: var(--rosa-principal);
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: white;
+            color: var(--rosa-principal);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-links a:hover {
+            background: var(--rosa-principal);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 133, 162, 0.2);
+            color: var(--cinza);
+        }
+
+        /* ============= EMPTY STATE ============= */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-state i {
+            font-size: 5rem;
+            color: var(--rosa-suave);
+            margin-bottom: 20px;
+        }
+
+        .empty-state h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--preto);
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: var(--cinza);
+            font-size: 1.1rem;
+        }
+
+        /* ============= ANIMATIONS ============= */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============= RESPONSIVE ============= */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .section-title h2 { font-size: 2rem; }
+            .grid-produtos { grid-template-columns: 1fr; }
+            
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============= TOAST NOTIFICATIONS ============= */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 3000;
+            animation: slideInRight 0.4s ease;
+            max-width: 400px;
+        }
+
+        .toast.success {
+            border-left: 4px solid #27ae60;
+        }
+
+        .toast.error {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .toast i {
+            font-size: 1.5rem;
+        }
+
+        .toast.success i {
+            color: #27ae60;
+        }
+
+        .toast.error i {
+            color: #e74c3c;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">Ateliê Rosa</div>
-    <button class="login-btn" onclick="openLogin()">Área Restrita</button>
+<!-- HEADER -->
+<header id="header">
+    <div class="logo">
+        <i class="fas fa-gem"></i>
+        Ateliê Rosa
+    </div>
+    <nav>
+        <a href="#home">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#contato">Contato</a>
+        <button class="btn-admin" onclick="openLogin()">
+            <i class="fas fa-lock"></i> Área Admin
+        </button>
+    </nav>
 </header>
 
-<section class="hero">
-    <h1>Beleza e Requinte em Luanda</h1>
-    <p>O toque especial que a mulher angolana merece.</p>
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Ateliê Rosa</h1>
+        <p>Beleza, Elegância e Sofisticação em Luanda</p>
+        <a href="#produtos" class="hero-cta">
+            <i class="fas fa-shopping-bag"></i> Ver Coleção
+        </a>
+    </div>
 </section>
 
-<div class="container">
-    <h2 style="text-align: center; font-family: 'Playfair Display';">Nossa Coleção</h2>
-    <div class="grid-produtos" id="lista-produtos">
+<!-- PRODUTOS SECTION -->
+<div class="container" id="produtos">
+    <div class="section-title">
+        <h2>Nossa Coleção</h2>
+        <div class="divider"></div>
+        <p>Descubra peças exclusivas selecionadas especialmente para você</p>
+    </div>
+    
+    <div class="produtos-header">
+        <div class="produtos-count">
+            <span id="produtos-total">0</span> produtos disponíveis
         </div>
-</div>
-
-<div id="admin-login" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1500; justify-content:center; align-items:center;">
-    <div style="background:white; padding:30px; border-radius:10px;">
-        <h3>Acesso Administrativo</h3>
-        <input type="text" id="user" placeholder="Telefone (934...)">
-        <input type="password" id="pass" placeholder="Palavra-passe">
-        <button onclick="checkLogin()" style="width:100%; padding:10px; background:var(--rosa-principal); border:none; color:white; margin-top:10px;">Entrar</button>
+    </div>
+    
+    <div class="grid-produtos" id="lista-produtos">
+        <!-- Produtos serão inseridos aqui -->
+    </div>
+    
+    <div class="empty-state" id="empty-state" style="display: none;">
+        <i class="fas fa-box-open"></i>
+        <h3>Nenhum produto disponível</h3>
+        <p>Novos produtos em breve!</p>
     </div>
 </div>
 
-<div id="admin-panel">
-    <h3>Novo Produto</h3>
-    <input type="text" id="p-nome" placeholder="Nome do Produto">
-    <input type="text" id="p-preco" placeholder="Preço (Ex: 15.000)">
-    <input type="text" id="p-img" placeholder="Link da Imagem">
-    <textarea id="p-desc" placeholder="Breve descrição"></textarea>
-    <button onclick="addProduct()" style="width:100%; padding:10px; background:green; border:none; color:white;">Publicar no Site</button>
-    <button onclick="closeAdmin()" style="width:100%; padding:10px; background:gray; border:none; color:white; margin-top:5px;">Sair</button>
+<!-- MODAL LOGIN -->
+<div class="modal-overlay" id="admin-login">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i class="fas fa-shield-alt"></i> Acesso Administrativo</h3>
+            <p>Insira suas credenciais para continuar</p>
+        </div>
+        <form onsubmit="checkLogin(event)">
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> Telefone</label>
+                <input type="text" id="user" placeholder="934821771" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-key"></i> Palavra-passe</label>
+                <input type="password" id="pass" placeholder="Digite sua senha" required>
+            </div>
+            <button type="submit" class="btn-primary">
+                <i class="fas fa-sign-in-alt"></i> Entrar
+            </button>
+            <button type="button" class="btn-secondary" onclick="closeLogin()">
+                Cancelar
+            </button>
+        </form>
+    </div>
 </div>
 
-<footer>
-    <p>&copy; 2024 Ateliê Rosa - Feito com ❤️ para Angola.</p>
-    <p>Contacto: 934821771</p>
-    <div style="margin-top: 15px;">
-        <a href="tel:934821771" style="margin-right: 15px; color: var(--rosa-principal);">Ligar Agora</a>
-        <a href="https://wa.me/244934821771" style="color: green;">WhatsApp</a>
+<!-- MODAL ADMIN PANEL -->
+<div class="modal-overlay" id="admin-panel">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>
+                <i class="fas fa-plus-circle"></i> 
+                <span id="modal-title">Adicionar Produto</span>
+                <span class="admin-badge">ADMIN</span>
+            </h3>
+            <p id="modal-subtitle">Preencha os dados do produto</p>
+        </div>
+        <form onsubmit="saveProduct(event)">
+            <input type="hidden" id="edit-index" value="">
+            <div class="form-group">
+                <label><i class="fas fa-tag"></i> Nome do Produto</label>
+                <input type="text" id="p-nome" placeholder="Ex: Bolsa de Couro Rosa" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-dollar-sign"></i> Preço (Kz)</label>
+                <input type="text" id="p-preco" placeholder="Ex: 15.000" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-image"></i> Link da Imagem</label>
+                <input type="url" id="p-img" placeholder="https://exemplo.com/imagem.jpg" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-align-left"></i> Descrição</label>
+                <textarea id="p-desc" placeholder="Breve descrição do produto..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary">
+                <i class="fas fa-check"></i> <span id="btn-save-text">Publicar Produto</span>
+            </button>
+            <button type="button" class="btn-secondary" onclick="closeAdmin()">
+                <i class="fas fa-times"></i> Cancelar
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contato">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Ateliê Rosa</h3>
+            <p>Sua loja de confiança em Luanda para produtos de beleza, moda e elegância. Qualidade e sofisticação em cada peça.</p>
+            <div class="social-links">
+                <a href="https://wa.me/244934821771" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Contato</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>934 821 771</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Luanda, Angola</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Seg - Sáb: 9h - 18h</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Links Rápidos</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="#home" style="color: var(--preto); text-decoration: none;">Início</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="#produtos" style="color: var(--preto); text-decoration: none;">Produtos</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="https://wa.me/244934821771" style="color: var(--preto); text-decoration: none;">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 Ateliê Rosa - Todos os direitos reservados | Feito com <i class="fas fa-heart" style="color: var(--rosa-principal);"></i> em Angola</p>
     </div>
 </footer>
 
 <script>
-    // Sistema de Login
+    // ============= SISTEMA DE AUTENTICAÇÃO =============
+    let isAdminLoggedIn = false;
+    
     function openLogin() {
         document.getElementById('admin-login').style.display = 'flex';
     }
-
-    function checkLogin() {
-        const u = document.getElementById('user').value;
-        const p = document.getElementById('pass').value;
-        if(u === '934821771' && p === 'marakelcy14') {
-            document.getElementById('admin-login').style.display = 'none';
-            document.getElementById('admin-panel').style.display = 'block';
+    
+    function closeLogin() {
+        document.getElementById('admin-login').style.display = 'none';
+    }
+    
+    function checkLogin(event) {
+        event.preventDefault();
+        const user = document.getElementById('user').value;
+        const pass = document.getElementById('pass').value;
+        
+        if(user === '934821771' && pass === 'marakelcy14') {
+            isAdminLoggedIn = true;
+            closeLogin();
+            openAdminPanel();
+            showToast('Login realizado com sucesso!', 'success');
         } else {
-            alert('Dados incorrectos, mami!');
+            showToast('Credenciais incorretas! Tente novamente.', 'error');
         }
     }
-
+    
+    // ============= PAINEL ADMINISTRATIVO =============
+    function openAdminPanel() {
+        document.getElementById('modal-title').textContent = 'Adicionar Produto';
+        document.getElementById('modal-subtitle').textContent = 'Preencha os dados do produto';
+        document.getElementById('btn-save-text').textContent = 'Publicar Produto';
+        document.getElementById('edit-index').value = '';
+        document.getElementById('p-nome').value = '';
+        document.getElementById('p-preco').value = '';
+        document.getElementById('p-img').value = '';
+        document.getElementById('p-desc').value = '';
+        document.getElementById('admin-panel').style.display = 'flex';
+    }
+    
     function closeAdmin() {
         document.getElementById('admin-panel').style.display = 'none';
     }
-
-    // Gerenciamento de Produtos
+    
+    // ============= GERENCIAMENTO DE PRODUTOS =============
     let produtos = JSON.parse(localStorage.getItem('atelie_produtos')) || [];
-
-    function render() {
+    
+    function renderProdutos() {
         const lista = document.getElementById('lista-produtos');
+        const emptyState = document.getElementById('empty-state');
+        const totalElement = document.getElementById('produtos-total');
+        
+        totalElement.textContent = produtos.length;
+        
+        if(produtos.length === 0) {
+            lista.style.display = 'none';
+            emptyState.style.display = 'block';
+            return;
+        }
+        
+        lista.style.display = 'grid';
+        emptyState.style.display = 'none';
         lista.innerHTML = '';
-        produtos.forEach(p => {
-            lista.innerHTML += `
-                <div class="card">
-                    <img src="${p.img}" alt="${p.nome}">
-                    <div class="card-info">
-                        <h3>${p.nome}</h3>
-                        <p>${p.desc}</p>
-                        <p class="price">${p.preco} Kz</p>
-                        <a href="https://wa.me/244934821771?text=Olá, quero o produto ${p.nome}" class="btn-contato">Encomendar</a>
+        
+        produtos.forEach((produto, index) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="card-image">
+                    <img src="${produto.img}" alt="${produto.nome}" onerror="this.src='https://via.placeholder.com/300x320/ff85a2/ffffff?text=Sem+Imagem'">
+                    <div class="card-badge">Novo</div>
+                </div>
+                <div class="card-info">
+                    <h3>${produto.nome}</h3>
+                    <p>${produto.desc}</p>
+                    <span class="price">${produto.preco} Kz</span>
+                    <div class="card-actions">
+                        <a href="https://wa.me/244934821771?text=Olá! Gostaria de encomendar o produto: *${produto.nome}* no valor de ${produto.preco} Kz" 
+                           class="btn-contato" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Encomendar
+                        </a>
                     </div>
+                    ${isAdminLoggedIn ? `
+                        <div class="admin-actions">
+                            <button class="btn-edit" onclick="editProduct(${index})">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="btn-delete" onclick="deleteProduct(${index})">
+                                <i class="fas fa-trash"></i> Excluir
+                            </button>
+                        </div>
+                    ` : ''}
                 </div>
             `;
+            lista.appendChild(card);
         });
     }
-
-    function addProduct() {
+    
+    function saveProduct(event) {
+        event.preventDefault();
+        
         const nome = document.getElementById('p-nome').value;
         const preco = document.getElementById('p-preco').value;
         const img = document.getElementById('p-img').value;
         const desc = document.getElementById('p-desc').value;
-
-        if(nome && preco && img) {
-            produtos.push({nome, preco, img, desc});
+        const editIndex = document.getElementById('edit-index').value;
+        
+        const produto = { nome, preco, img, desc };
+        
+        if(editIndex !== '') {
+            // Editar produto existente
+            produtos[editIndex] = produto;
+            showToast('Produto atualizado com sucesso!', 'success');
+        } else {
+            // Adicionar novo produto
+            produtos.push(produto);
+            showToast('Produto adicionado com sucesso!', 'success');
+        }
+        
+        localStorage.setItem('atelie_produtos', JSON.stringify(produtos));
+        renderProdutos();
+        closeAdmin();
+    }
+    
+    function editProduct(index) {
+        const produto = produtos[index];
+        
+        document.getElementById('modal-title').textContent = 'Editar Produto';
+        document.getElementById('modal-subtitle').textContent = 'Atualize os dados do produto';
+        document.getElementById('btn-save-text').textContent = 'Atualizar Produto';
+        document.getElementById('edit-index').value = index;
+        document.getElementById('p-nome').value = produto.nome;
+        document.getElementById('p-preco').value = produto.preco;
+        document.getElementById('p-img').value = produto.img;
+        document.getElementById('p-desc').value = produto.desc;
+        document.getElementById('admin-panel').style.display = 'flex';
+    }
+    
+    function deleteProduct(index) {
+        if(confirm('Tem certeza que deseja excluir este produto?')) {
+            produtos.splice(index, 1);
             localStorage.setItem('atelie_produtos', JSON.stringify(produtos));
-            render();
-            alert('Produto adicionado com sucesso!');
+            renderProdutos();
+            showToast('Produto excluído com sucesso!', 'success');
         }
     }
-
-    render();
+    
+    // ============= NOTIFICAÇÕES TOAST =============
+    function showToast(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.innerHTML = `
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+            <span>${message}</span>
+        `;
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.style.animation = 'slideInRight 0.4s ease reverse';
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
+    }
+    
+    // ============= HEADER SCROLL EFFECT =============
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if(window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // ============= SMOOTH SCROLL =============
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+    
+    // ============= INICIALIZAÇÃO =============
+    renderProdutos();
 </script>
 
 </body>
